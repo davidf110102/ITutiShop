@@ -137,7 +137,16 @@
                     while($row_cat = $sqlCaracter->fetch(PDO::FETCH_ASSOC)) {
                         $idCat = $row_cat['idCat'];
                         echo $row_cat['caracteristica'] . ": ";
-                        
+                        echo "<select class='form-select' id='cat_$idCat'>";
+
+                        $sqlDet = $con->prepare("SELECT det.id, det.valor, det.stock FROM 
+                        det_prod_caracter AS det WHERE id_producto=? AND 
+                        id_caracteristica=?");
+                        $sqlDet->execute([$id, $idCat]);
+                        while($row_det = $sqlDet->fetch(PDO::FETCH_ASSOC)){
+                            echo "<option id='" . $row_det['id'] . "'>" . $row_det['valor'] . "</option>";
+                        }
+                        echo "</select>";
                     }
                     ?>
                 </div>
