@@ -1,0 +1,14 @@
+main> .container {
+    padding: 30px 0;
+}
+.btn-yellow {
+    color: rgb(92, 87, 0);        /* Color del texto */
+    border-color: rgb(92, 87, 0);  /* Color del borde */
+    background-color: transparent;   /* Fondo transparente */
+}
+
+.btn-yellow:hover, .btn-yellow:focus {
+    color: rgb(0, 0, 0);                 /* Mantiene el color del texto */
+    border-color: rgb(255, 241, 0);          /* Un amarillo más oscuro para el borde en hover */
+    background-color: rgb(255, 241, 0);    /* Un amarillo más claro para el fondo */
+}
