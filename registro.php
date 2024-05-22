@@ -1,6 +1,7 @@
 <?php
     require 'config/config.php';
     require 'config/database.php';
+    require 'clases/clienteFunciones.php';
     $db = new Database();
     $con = $db->conectar();
 
@@ -16,62 +17,26 @@
         $usuario = trim($_POST['usuario']);
         $password = trim($_POST['password']);
         $repassword = trim($_POST['repassword']);
+
+        $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
+
+        if($id > 0){
+            $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+            $token = generarToken();
+            if(!registraUsuario([$usuario, $pass_hash, $token, $id], $con)){
+                $errors[] = "Error al registrar usuario";
+            }
+        }else{
+            $errors[] = "Error al registrar cliente";
+        }
+
+        if(count($errors) == 0){
+
+        }else{
+            print_r($errors);
+        }
     }
 
-    $idCategoria = $_GET['cat'] ?? '';
-    $orden = $_GET['orden'] ?? '';
-    $buscar = $_GET['q'] ?? '';
-    $filtro = '';
-
-    $orders = [
-        
-        'asc' => 'nombre ASC',
-        'desc' => 'nombre DESC',
-        'precio_alto' => 'precio DESC',
-        'precio_bajo' => 'precio ASC'
-    ];
-
-    $order = $orders[$orden] ?? '';
-
-    if(!empty($order)){
-        $order = " ORDER BY $order";
-    }
-
-    //$params = [];
-
-    //$query = "SELECT id, nombre, precio FROM productos WHERE activo = 1 $order";
-
-    if($buscar != ''){
-        /*$query .= " AND nombre LIKE ?"; 
-        $params[] = "%$buscar%";*/
-        $filtro = "AND (nombre LIKE '%$buscar%' || descripcion LIKE '%$buscar%')";
-    }
-    /*if($idCategoria != ''){
-        $query .= " AND id_Categoria=?";
-        $params[] = $idCategoria;
-    }
-    $query = $con->prepare($query);
-    $query -> execute($params);*/
-    
-    
-    if(!empty($idCategoria)){
-        $sql = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo = 1 $filtro AND id_Categoria=?
-        $order");
-        $sql->execute([$idCategoria]);
-    } else {
-        $sql = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo = 1 $filtro $order");
-        $sql->execute();
-    }
-    
-    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    $sqlCategorias = $con->prepare("SELECT id, nombre FROM categorias WHERE activo = 1");
-    $sqlCategorias->execute();
-    $categorias = $sqlCategorias->fetchAll(PDO::FETCH_ASSOC);
-
-    //session_destroy();
-
-    //print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,15 +68,7 @@
                 <a href="index.php" class="nav-link">Contacto</a>
             </li>
         </ul>
-        <form action="index.php" method="get" autocomplete="off">
-            <div class = "input-group pe-3">
-                <input type = "text" name = "q" id = "q" class="form-control form-control-sm" 
-                placeholder="Buscar..." aria-describedby = "icon-buscar">
-                <button type = "submit" id="icon-buscar" class="btn btn-outline-primary btn-sm">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </form>
+        
         <a href="checkout.php" class="btn btn-primary btn-sm me-2">
             <i class = "fas fa-shopping-cart"></i> Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart; ?></span>
         </a>
