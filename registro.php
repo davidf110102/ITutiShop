@@ -29,22 +29,27 @@
             $errors[] = "Las contraseñas no coinciden";
         }
 
-        $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
+        if(usuarioExiste($usuario, $con)){
+            $errors[] = "El nombre de usuario $usuario ya existe";
+        }
 
-        if($id > 0){
-            $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-            $token = generarToken();
-            if(!registraUsuario([$usuario, $pass_hash, $token, $id], $con)){
-                $errors[] = "Error al registrar usuario";
-            }
-        }else{
-            $errors[] = "Error al registrar cliente";
+        if(emailExiste($email, $con)){
+            $errors[] = "El correo electrónico $email ya existe";
         }
 
         if(count($errors) == 0){
 
-        }else{
-            print_r($errors);
+            $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
+
+            if($id > 0){
+                $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+                $token = generarToken();
+                if(!registraUsuario([$usuario, $pass_hash, $token, $id], $con)){
+                    $errors[] = "Error al registrar usuario";
+                }
+            }else{
+                $errors[] = "Error al registrar cliente";
+            }
         }
     }
 

@@ -43,3 +43,22 @@ function registraUsuario(array $datos, $con){
     }
     return false;
 }
+
+function usuarioExiste($usuario, $con){
+    $sql = $con->prepare("SELECT id FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql->execute([$usuario]);
+    if($sql->fetch_column() > 0){
+        return true;
+    }
+    return false;
+}
+
+function emailExiste($email, $con){
+    $sql = $con->prepare("SELECT id FROM clientes WHERE email LIKE ? LIMIT 1");
+    $sql->execute([$email]);
+    if($sql->fetch_column() > 0){
+        return true;
+    }
+    return false;
+}
+
