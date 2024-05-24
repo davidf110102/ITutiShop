@@ -29,9 +29,18 @@
             <i class = "fas fa-shopping-cart"></i> Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart; ?></span>
         </a>
         <?php if(isset($_SESSION['user_id'])) { ?>
-            <a href="#" class="btn btn-success"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['user_name']; ?></a>
+
+            <div class="dropdown">
+                <button class="btn btn-success btn-sm dropdown-toggle" type="button" 
+                id="btn_session" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i> <?php echo $_SESSION['user_name']; ?>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btn_session">
+                    <li><a class="dropdown-item" href="logout.php">Cerrrar sesión</a></li>
+                </ul>
+            </div>
         <?php } else {?>
-            <a href="login.php" class="btn btn-success"><i class="fa-solid fa-user"></i> Ingresar </a>   
+            <a href="login.php" class="btn btn-success btn-sm"><i class="fa-solid fa-user"></i> Ingresar </a>   
         <?php } ?>
     </div>
     </div>
