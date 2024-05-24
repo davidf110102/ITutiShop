@@ -9,7 +9,19 @@ function esNulo(array $parametros){
     return false;
 }
 
+function esEmil($email){
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        return true;
+    }
+    return false;
+}
 
+function validaPassword($password, $repassword){
+    if(strcmp($password, $repassword) === 0){
+        return true;
+    }
+    return false;
+}
 function generarToken(){
     return md5(uniqid(mt_rand(), false));
 }
