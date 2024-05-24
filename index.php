@@ -9,6 +9,7 @@
     $filtro = '';
 
     $orders = [
+        
         'asc' => 'nombre ASC',
         'desc' => 'nombre DESC',
         'precio_alto' => 'precio DESC',
