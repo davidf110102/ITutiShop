@@ -97,38 +97,41 @@
     <div class="container">
         <h2>Datos del cliente</h2>
 
+        <?php mostrarMensajes($errors); 
+        ?>
+
         <form class= "row g-3" action="registro.php" method="post" autocomplete>
             <div class="col-md-6">
                 <label for="nombres"><span class="text-danger">*</span>Nombres</label>
-                <input type="text" name="nombres" id="nombres" class="form-control"required>
+                <input type="text" name="nombres" id="nombres" class="form-control" requireda>
             </div>
             <div class="col-md-6">
                 <label for="apellidos"><span class="text-danger">*</span>Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" class="form-control"required>
+                <input type="text" name="apellidos" id="apellidos" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="email"><span class="text-danger">*</span>Correo Electronico</label>
-                <input type="email" name="email" id="email" class="form-control"required>
+                <input type="email" name="email" id="email" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="telefono"><span class="text-danger">*</span>Telefono</label>
-                <input type="tel" name="telefono" id="telefono" class="form-control"required>
+                <input type="tel" name="telefono" id="telefono" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="dni"><span class="text-danger">*</span>Cedula</label>
-                <input type="text" name="dni" id="dni" class="form-control"required>
+                <input type="text" name="dni" id="dni" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="usuario"><span class="text-danger">*</span>Usuario</label>
-                <input type="text" name="usuario" id="usuario" class="form-control"required>
+                <input type="text" name="usuario" id="usuario" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="password"><span class="text-danger">*</span>Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control"required>
+                <input type="password" name="password" id="password" class="form-control"requireda>
             </div>
             <div class="col-md-6">
                 <label for="repassword"><span class="text-danger">*</span>Repetir Contraseña</label>
-                <input type="password" name="repassword" id="repassword" class="form-control"required>
+                <input type="password" name="repassword" id="repassword" class="form-control"requireda>
             </div>
 
             <i><b>Nota:</b> Los campos con asterisco son obligatorios</i>
