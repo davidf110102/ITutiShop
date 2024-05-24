@@ -9,7 +9,7 @@ function esNulo(array $parametros){
     return false;
 }
 
-function esEmil($email){
+function esEmail($email){
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         return true;
     }
@@ -47,7 +47,7 @@ function registraUsuario(array $datos, $con){
 function usuarioExiste($usuario, $con){
     $sql = $con->prepare("SELECT id FROM usuarios WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$usuario]);
-    if($sql->fetch_column() > 0){
+    if($sql->fetchColumn() > 0){
         return true;
     }
     return false;
@@ -56,9 +56,19 @@ function usuarioExiste($usuario, $con){
 function emailExiste($email, $con){
     $sql = $con->prepare("SELECT id FROM clientes WHERE email LIKE ? LIMIT 1");
     $sql->execute([$email]);
-    if($sql->fetch_column() > 0){
+    if($sql->fetchColumn() > 0){
         return true;
     }
     return false;
 }
 
+function mostrarMensajes(array $errors){
+    if(count($errors) > 0){
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><ul>';
+        foreach($errors as $error){
+            echo '<li>'. $error . '</li>';
+        }
+        echo '<ul>';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    }
+}
