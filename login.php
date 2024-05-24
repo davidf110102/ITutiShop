@@ -66,12 +66,12 @@
 
     <form class="row g-3" action="login.php" method="post" autocomplete ="off">
     <div class = "form-floating">
-        <input class="form-control" type="text" name = "usuario" id="usuario" placeholder="Usuario" requireda>
+        <input class="form-control" type="text" name = "usuario" id="usuario" placeholder="Usuario" required>
         <label for="usuario">Usuario</label>
     </div>
 
     <div class = "form-floating">
-        <input class="form-control" type="password" name = "password" id="password" placeholder="Contraseña" requireda>
+        <input class="form-control" type="password" name = "password" id="password" placeholder="Contraseña" required>
         <label for="password">Contraseña</label>
     </div>
 
