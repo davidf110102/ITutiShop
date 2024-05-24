@@ -18,6 +18,17 @@
         $password = trim($_POST['password']);
         $repassword = trim($_POST['repassword']);
 
+        if(esNulo([$nombres, $apellidos, $email, $telefono, $dni, $usuario, $password, $repassword])){
+            $errors[] = "Debe llenar todos los campos";
+        }
+        if(!esEmail($email)){
+            $errors[] = "La dirección de correo no es valida";
+        }
+
+        if(!validaPassword($password, $repassword)){
+            $errors[] = "Las contraseñas no coinciden";
+        }
+
         $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
 
         if($id > 0){
