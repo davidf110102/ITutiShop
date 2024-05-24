@@ -1,4 +1,5 @@
 <?php
+    define("SITE_URL", "http://localhost/ITutiShop"); 
     define("CLIENT_ID", "Ad7IMXOaBDm9Rti8M3nHRqSW3gsrwo_4NmWbdzH7QKBtP6czf5PN6wUEEVlKMpHpWP80sfTtMr_CSlXj"); 
     define("CURRENCY", "MXN"); 
     define("KEY_TOKEN", "APR.wqc-354*"); 
