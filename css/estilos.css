@@ -12,3 +12,7 @@ main> .container {
     border-color: rgb(255, 241, 0);          /* Un amarillo más oscuro para el borde en hover */
     background-color: rgb(255, 241, 0);    /* Un amarillo más claro para el fondo */
 }
+
+.form-login {
+    max-width: 350px;
+}
