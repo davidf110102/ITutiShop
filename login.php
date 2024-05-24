@@ -9,31 +9,14 @@
 
     if(!empty($_POST)){
 
-        $nombres = trim($_POST['nombres']);
-        $apellidos = trim($_POST['apellidos']);
-        $email = trim($_POST['email']);
-        $telefono = trim($_POST['telefono']);
-        $dni = trim($_POST['dni']);
         $usuario = trim($_POST['usuario']);
         $password = trim($_POST['password']);
-        $repassword = trim($_POST['repassword']);
 
-        $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
-
-        if($id > 0){
-            $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-            $token = generarToken();
-            if(!registraUsuario([$usuario, $pass_hash, $token, $id], $con)){
-                $errors[] = "Error al registrar usuario";
-            }
-        }else{
-            $errors[] = "Error al registrar cliente";
+        if(esNulo([$usuario, $password])){
+            $errors[] = "Debe llenar todos los campos";
         }
-
         if(count($errors) == 0){
-
-        }else{
-            print_r($errors);
+            $errors[] = login($usuario, $password, $con);
         }
     }
 
@@ -79,16 +62,16 @@
 </header>
 <main class = "form-login m-auto pt-4">
     <h2>Iniciar Sesión</h2>
-    <?php// mostrarMensajes($errors); ?>
+    <?php mostrarMensajes($errors); ?>
 
     <form class="row g-3" action="login.php" method="post" autocomplete ="off">
     <div class = "form-floating">
-        <input class="form-control" type="text" name = "usuario" id="usuario" placeholder="Usuario" required>
+        <input class="form-control" type="text" name = "usuario" id="usuario" placeholder="Usuario" requireda>
         <label for="usuario">Usuario</label>
     </div>
 
     <div class = "form-floating">
-        <input class="form-control" type="password" name = "password" id="password" placeholder="Contraseña" required>
+        <input class="form-control" type="password" name = "password" id="password" placeholder="Contraseña" requireda>
         <label for="password">Contraseña</label>
     </div>
 

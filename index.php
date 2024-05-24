@@ -100,7 +100,11 @@
         <a href="checkout.php" class="btn btn-primary btn-sm me-2">
             <i class = "fas fa-shopping-cart"></i> Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart; ?></span>
         </a>
-
+        <?php if(isset($_SESSION['user_id'])) { ?>
+            <a href="#" class="btn btn-success"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['user_name']; ?></a>
+        <?php } else {?>
+            <a href="login.php" class="btn btn-success"><i class="fa-solid fa-user"></i> Ingresar </a>   
+        <?php } ?>
     </div>
     </div>
 </div>
