@@ -1,5 +1,15 @@
 <?php
 
+function esNulo(array $parametros){
+    foreach ($parametros as $parametro) {
+        if (strlen(trim($parametro)) < 1) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 function generarToken(){
     return md5(uniqid(mt_rand(), false));
 }
