@@ -31,14 +31,14 @@
         <hr>
 
         <?php while($row= $sql->fetch(PDO::FETCH_ASSOC)){?>
-        <div class="card">
+        <div class="card mb-3 border-primary">
             <div class="card-header">
-                Featured
+                <?php echo $row['fecha']; ?>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Folio: <?php echo $row['id_transaccion']; ?></h5>
+                <p class="card-text">Total: <?php echo $row['total']; ?></p>
+                <a href="compra_detalle.php" class="btn btn-primary">Ver Compra</a>
             </div>
         </div>
         <?php }?>
