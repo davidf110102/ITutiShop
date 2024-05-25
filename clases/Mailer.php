@@ -8,10 +8,14 @@ class Mailer
 {
     function enviarEmail($email, $asunto, $cuerpo)
     {
-        require_once '/xampp/htdocs/ITUTISHOP/config/config.php';
-        require '/xampp/htdocs/ITUTISHOP/phpmailer/src/Exception.php';
-        require '/xampp/htdocs/ITUTISHOP/phpmailer/src/PHPMailer.php';
-        require '/xampp/htdocs/ITUTISHOP/phpmailer/src/SMTP.php';
+        require_once __DIR__.'/../config/config.php';
+        require __DIR__.'/../phpmailer/src/Exception.php';
+        require __DIR__.'/../phpmailer/src/PHPMailer.php';
+        require __DIR__.'/../phpmailer/src/SMTP.php';
+        //require_once __DIR__.'/xampp/htdocs/ITUTISHOP/config/config.php';
+        //require __DIR__.'/xampp/htdocs/ITUTISHOP/phpmailer/src/Exception.php';
+        //require __DIR__.'/xampp/htdocs/ITUTISHOP/phpmailer/src/PHPMailer.php';
+        //require __DIR__.'/xampp/htdocs/ITUTISHOP/phpmailer/src/SMTP.php';
 
         $mail = new PHPMailer(true);
 
