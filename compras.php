@@ -5,7 +5,6 @@
     $db = new Database();
     $con = $db->conectar();
 
-    print_r($_SESSION);
     $idCliente = $_SESSION['user_cliente'];
 
     $sql = $con->prepare("SELECT id_transaccion, fecha, status, total, medio_pago  FROM compras WHERE 
@@ -28,6 +27,21 @@
 
 <main class = "flex-shrink-0">
     <div class="container">
+        <h4>Mis compras</h4>
+        <hr>
+
+        <?php while($row= $sql->fetch(PDO::FETCH_ASSOC)){?>
+        <div class="card">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <?php }?>
     </div>
 </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
