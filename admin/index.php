@@ -5,8 +5,8 @@ require 'clases/adminFunciones.php';
 $db = new Database();
 $con = $db->conectar();
 
-$password = password_hash('admin', PASSWORD_DEFAULT);
-$sql = "INSERT INTO admin (usuario, password, nombre, email, activo, fecha_alta) VALUES ('admin','$password','Administrador','vichicelakevin@gmail.com','1',NOW())";
+/*$password = password_hash('admin', PASSWORD_DEFAULT);
+$sql = "INSERT INTO admin (usuario, password, nombre, email, activo, fecha_alta) VALUES ('admin','$password','Administrador','vichicelakevin@gmail.com','1',NOW())";*/
 
 $con->query($sql);
 
