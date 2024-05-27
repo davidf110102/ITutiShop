@@ -8,6 +8,7 @@ $con = $db->conectar();
 /*$password = password_hash('admin', PASSWORD_DEFAULT);
 $sql = "INSERT INTO admin (usuario, password, nombre, email, activo, fecha_alta) VALUES ('admin','$password','Administrador','vichicelakevin@gmail.com','1',NOW())";
 $con->query($sql);*/
+$errors = [];
 
 if (!empty($_POST)) {
   $usuario = trim($_POST['usuario']);
@@ -17,9 +18,8 @@ if (!empty($_POST)) {
     $errors[] = "Debe llenar todos los campos";
   }
 
-  if (count($erros) == 0) {
+  if (count($errors) == 0) {
     $errors[] = login($usuario, $password, $con);
-    # code...
   }
 }
 
@@ -55,17 +55,19 @@ if (!empty($_POST)) {
                 <div class="card-body">
                   <form action="index.php" method="post" autocomplete="off">
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" require autofocus />
+                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" autofocus />
                       <label for="inputEmail">Usuario</label>
                     </div>
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" require />
+                      <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" />
                       <label for="password">Contraseña</label>
                     </div>
 
+                    <?php mostrarMensajes($errors); ?>
+
                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                      <a class="small" href="password.html">Forgot Password?</a>
-                      <a class="btn btn-primary" href="index.html">Login</a>
+                      <a class="small" href="password.html">Olvidaste tu contraseña?</a>
+                      <button type="submit" class="btn btn-primary">Login </button>
                     </div>
                   </form>
                 </div>
