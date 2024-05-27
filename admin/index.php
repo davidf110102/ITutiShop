@@ -6,9 +6,23 @@ $db = new Database();
 $con = $db->conectar();
 
 /*$password = password_hash('admin', PASSWORD_DEFAULT);
-$sql = "INSERT INTO admin (usuario, password, nombre, email, activo, fecha_alta) VALUES ('admin','$password','Administrador','vichicelakevin@gmail.com','1',NOW())";*/
+$sql = "INSERT INTO admin (usuario, password, nombre, email, activo, fecha_alta) VALUES ('admin','$password','Administrador','vichicelakevin@gmail.com','1',NOW())";
+$con->query($sql);*/
 
-$con->query($sql);
+if (!empty($_POST)) {
+  $usuario = trim($_POST['usuario']);
+  $password = trim($_POST['password']);
+
+  if (esNulo([$usuario, $password])) {
+    $errors[] = "Debe llenar todos los campos";
+  }
+
+  if (count($erros) == 0) {
+    $errors[] = login($usuario, $password, $con);
+    # code...
+  }
+}
+
 
 ?>
 
