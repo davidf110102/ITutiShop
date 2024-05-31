@@ -1,0 +1,6 @@
+projectKey=ITuti
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=ITuti
+ceTaskId=cb582fa1-06e0-4ad6-951c-9f8917b1f7be
+ceTaskUrl=http://localhost:9000/api/ce/task?id=cb582fa1-06e0-4ad6-951c-9f8917b1f7be
