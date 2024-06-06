@@ -55,11 +55,13 @@ if (!empty($_POST)) {
                 <div class="card-body">
                   <form action="index.php" method="post" autocomplete="off">
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" autofocus />
+                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario"
+                        autofocus />
                       <label for="inputEmail">Usuario</label>
                     </div>
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" />
+                      <input class="form-control" id="password" name="password" type="password"
+                        placeholder="Contraseña" />
                       <label for="password">Contraseña</label>
                     </div>
 
@@ -67,7 +69,7 @@ if (!empty($_POST)) {
 
                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                       <a class="small" href="password.html">Olvidaste tu contraseña?</a>
-                      <button type="submit" class="btn btn-primary">Login </button>
+                      <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                     </div>
                   </form>
                 </div>
