@@ -55,13 +55,11 @@ if (!empty($_POST)) {
                 <div class="card-body">
                   <form action="index.php" method="post" autocomplete="off">
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario"
-                        autofocus />
+                      <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" autofocus />
                       <label for="inputEmail">Usuario</label>
                     </div>
                     <div class="form-floating mb-3">
-                      <input class="form-control" id="password" name="password" type="password"
-                        placeholder="Contraseña" />
+                      <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" />
                       <label for="password">Contraseña</label>
                     </div>
 
