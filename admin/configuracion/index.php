@@ -16,8 +16,6 @@ foreach ($datos as $dato) {
   $config[$dato['nombre']] = $dato['valor'];
 }
 
-print_r($config);
-
 ?>
 <main>
   <div class="container-fluid px-4">
@@ -27,24 +25,26 @@ print_r($config);
       <div class="row">
         <div class="col-6">
           <label for="smtp">SMTP</label>
-          <input class="form-control" type="text" name="smtp" id="smtp">
+          <input class="form-control" type="text" name="smtp" id="smtp" value="<?php echo $config['correo_smtp'] ?>">
         </div>
 
         <div class="col-6">
           <label for="puerto">Puerto</label>
-          <input class="form-control" type="text" name="puerto" id="puerto">
+          <input class="form-control" type="text" name="puerto" id="puerto"
+            value="<?php echo $config['correo_puerto'] ?>">
         </div>
       </div>
 
       <div class="row">
         <div class="col-6">
           <label for="email">Correo electronico</label>
-          <input class="form-control" type="text" name="email" id="email">
+          <input class="form-control" type="text" name="email" id="email" value="<?php echo $config['correo_email'] ?>">
         </div>
 
         <div class="col-6">
           <label for="password">Contraseña</label>
-          <input class="form-control" type="text" name="password" id="password">
+          <input class="form-control" type="text" name="password" id="password"
+            value="<?php echo $config['correo_password'] ?>">
         </div>
       </div>
 
