@@ -1,6 +1,6 @@
 <?php
 
-define('KEY_CIFRADO', '123456789012345');
+define('KEY_CIFRADO', 'ADASAD1*531-5S');
 define('METODO', 'aes-128-cbc');
 
 function cifrar($data)
