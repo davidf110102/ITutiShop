@@ -3,6 +3,20 @@ require  '../config/database.php';
 require  '../config/config.php';
 require  '../header.php';
 
+$db = new Database();
+$con = $db->conectar();
+
+$sql = "SELECT nombre, valor FROM configuracion";
+$resultado = $con->query($sql);
+$datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$config = [];
+
+foreach ($datos as $dato) {
+  $config[$dato['nombre']] = $dato['valor'];
+}
+
+print_r($config);
 
 ?>
 <main>
@@ -36,7 +50,7 @@ require  '../header.php';
 
       <div class="row mt-4">
         <div class="col-12">
-          <button type="submit">Guardar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </form>
