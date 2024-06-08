@@ -1,4 +1,6 @@
 <?php
+
+require 'config/config.php';
 require 'config/database.php';
 require 'clases/adminFunciones.php';
 
