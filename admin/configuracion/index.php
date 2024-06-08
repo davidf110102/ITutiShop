@@ -34,8 +34,7 @@ foreach ($datos as $dato) {
 
         <div class="col-6">
           <label for="puerto">Puerto</label>
-          <input class="form-control" type="text" name="puerto" id="puerto"
-            value="<?php echo $config['correo_puerto'] ?>">
+          <input class="form-control" type="text" name="puerto" id="puerto" value="<?php echo $config['correo_puerto'] ?>">
         </div>
       </div>
 
@@ -47,8 +46,7 @@ foreach ($datos as $dato) {
 
         <div class="col-6">
           <label for="password">Contraseña</label>
-          <input class="form-control" type="password" name="password" id="password"
-            value="<?php echo $config['correo_password'] ?>">
+          <input class="form-control" type="password" name="password" id="password" value="<?php echo $config['correo_password'] ?>">
         </div>
       </div>
 
