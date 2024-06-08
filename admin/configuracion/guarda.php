@@ -2,6 +2,7 @@
 require '../config/database.php';
 require '../config/config.php';
 require '../header.php';
+require '../clases/cifrado.php';
 
 $db = new Database();
 $con = $db->conectar();
@@ -9,7 +10,7 @@ $con = $db->conectar();
 $smtp = $_POST['smtp'];
 $puerto = $_POST['puerto'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = cifrar($_POST['password']);
 
 $sql = $con->prepare("UPDATE configuracion SET valor=? Where nombre=?");
 $sql->execute([$smtp, 'correo_smtp']);
