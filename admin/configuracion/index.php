@@ -2,6 +2,7 @@
 require  '../config/database.php';
 require  '../config/config.php';
 require  '../header.php';
+require '../clases/cifrado.php';
 
 $db = new Database();
 $con = $db->conectar();
@@ -43,7 +44,7 @@ foreach ($datos as $dato) {
 
         <div class="col-6">
           <label for="password">Contraseña</label>
-          <input class="form-control" type="text" name="password" id="password"
+          <input class="form-control" type="password" name="password" id="password"
             value="<?php echo $config['correo_password'] ?>">
         </div>
       </div>
