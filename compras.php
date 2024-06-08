@@ -5,6 +5,8 @@
     $db = new Database();
     $con = $db->conectar();
 
+    $token = generarToken();
+    $_SESSION['token'] = $token;
     $idCliente = $_SESSION['user_cliente'];
 
     $sql = $con->prepare("SELECT id_transaccion, fecha, status, total, medio_pago  FROM compras WHERE 
@@ -38,7 +40,7 @@
             <div class="card-body">
                 <h5 class="card-title">Folio: <?php echo $row['id_transaccion']; ?></h5>
                 <p class="card-text">Total: <?php echo $row['total']; ?></p>
-                <a href="compra_detalle.php" class="btn btn-primary">Ver Compra</a>
+                <a href="compra_detalle.php?orden=<?php echo $row['id_transaccion']; ?>&token=<?php echo $token; ?>" class="btn btn-primary">Ver Compra</a>
             </div>
         </div>
         <?php }?>
