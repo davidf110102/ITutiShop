@@ -33,10 +33,10 @@ define("PUBLIC_KEY_MP", "TEST-f8d3d553-b99f");
 define("LOCALE_MP", "es-MX");
 
 //Datos para envio de correo electronico 
-define("MAIL_HOST", "mail.dominio.com");
-define("MAIL_USER", "tu_correo@dominio.com");
-define("MAIL_PASS", "tu_password");
-define("MAIL_PORT", "tu_puerto");
+define("MAIL_HOST", $config['correo_smtp']);
+define("MAIL_USER", $config['correo_email']);
+define("MAIL_PASS", descifrar($config['correo_password']));
+define("MAIL_PORT", $config['correo_puerto']);
 
 
 session_start();
