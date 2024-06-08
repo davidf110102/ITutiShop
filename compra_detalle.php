@@ -1,6 +1,5 @@
 <?php
     require 'config/config.php';
-    require 'config/database.php';
     require 'clases/clienteFunciones.php';
 
     $token_session = $_SESSION['token'];
