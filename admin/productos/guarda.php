@@ -52,9 +52,38 @@ if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria
         echo "No enviaste archivo";
     }
 
-    
+    //Subir otras imagenes
+
+    if(isset($_FILES['otras_imagenes'])){
+        $dir = '../../images/productos/'. $id . '/';
+        $permitidos = ['jpeg','jpg'];
+
+        if(!file_exists($dir)){
+            mkdir($dir, 0777, true);
+        }
+        
+        $contador = 1;
+        foreach($_FILES['otras_imagenes']['tmp_name'] as $key => $tmp_name){
+            $fileName = $FILES['otras_imagenes']['name'][$key];
+            $arregloImagen = explode('.', $fileName);
+            $extension = strtolower(end($arregloImagen));
+
+            if(in_array($extension, $permitidos)){
+                $ruta_img = $dir . $contador . '.' . $extension;
+                if(move_uploaded_file($tmp_name, $ruta_img)){
+                    echo "El archivo se cargó correctamente.<br>";
+                    $contador++;
+                }else{
+                    echo "Error al cargar el archivo.";
+                }
+            } else {
+                echo "Archivo no permitido";
+            }
+            
+        }
+    }
 }
 
-header('Location: index.php');
+//header('Location: index.php');
 
 ?>
