@@ -27,7 +27,7 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <div class="container-fluid px-4">
         <h2 class="mt-2">Nuevo Producto</h2>
 
-        <form action="guarda.php" method="post" autocomplete="off">
+        <form action="guarda.php" method="post" enctype="multipart/form-data" autocomplete="off">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" name="nombre" id="nombre" required autofocus>
@@ -36,6 +36,16 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
             </div>
+
+            <div class="row mb-2">
+                <div class = "col">
+                    <label for="imagen_principal" class = "form-label">Imagen principal</label>
+                    <input type="file" class="form-control" name="imagen_principal" id = "imagen_principal" accept="image/jpeg" required>
+                </div>
+                <div class = "col">
+                    <label for="otras_imagenes" class = "form-label">Otras imagenes</label>
+                    <input type="file" class="form-control" name="otras_imagenes" id = "otras_imagenes" accept="image/jpeg" multiple>
+                </div>
             <div class="row">
                 <div class="col mb-3">
                     <label for="precio" class="form-label">Precio</label>
