@@ -23,6 +23,12 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<style>
+    .ck-editor_editable[role="textbox"] {
+        min-height: 250px;
+    }
+</style>
 <main>
     <div class="container-fluid px-4">
         <h2 class="mt-2">Nuevo Producto</h2>
@@ -34,7 +40,7 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
+                <textarea class="form-control" name="descripcion" id="editor"></textarea>
             </div>
 
             <div class="row mb-2">
@@ -44,7 +50,7 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class = "col">
                     <label for="otras_imagenes" class = "form-label">Otras imagenes</label>
-                    <input type="file" class="form-control" name="otras_imagenes" id = "otras_imagenes" accept="image/jpeg" multiple>
+                    <input type="file" class="form-control" name="otras_imagenes[]" id = "otras_imagenes" accept="image/jpeg" multiple>
                 </div>
             <div class="row">
                 <div class="col mb-3">
@@ -77,5 +83,13 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </form>
     </div>
 </main>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 <?php require '../footer.php' ?>
