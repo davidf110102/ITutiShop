@@ -64,7 +64,7 @@ if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria
         
         $contador = 1;
         foreach($_FILES['otras_imagenes']['tmp_name'] as $key => $tmp_name){
-            $fileName = $FILES['otras_imagenes']['name'][$key];
+            $fileName = $_FILES['otras_imagenes']['name'][$key];
             $arregloImagen = explode('.', $fileName);
             $extension = strtolower(end($arregloImagen));
 
@@ -84,6 +84,6 @@ if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria
     }
 }
 
-//header('Location: index.php');
+header('Location: index.php');
 
 ?>
