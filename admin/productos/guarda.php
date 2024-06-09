@@ -28,6 +28,7 @@ $stm = $con->prepare($sql);
 if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria])){
     $id = $con->lastInsertId();
 
+    /*Subir imagen princiapl*/
     if($_FILES['imagen_principal']['error'] == UPLOAD_ERR_OK){
         $dir = '../../images/productos/'. $id . '/';
         $permitidos = ['jpeg','jpg'];
@@ -50,8 +51,10 @@ if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria
     } else {
         echo "No enviaste archivo";
     }
+
+    
 }
 
-//header('Location: index.php');
+header('Location: index.php');
 
 ?>
