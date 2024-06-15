@@ -1,58 +1,63 @@
 <?php
-    require '../config/database.php';
-    require '../config/config.php';
+require '../config/database.php';
+require '../config/config.php';
 
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin'){
-        header('Location: ../index.php');
-        exit;
-    }
-    
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+  header('Location: ../index.php');
+  exit;
+}
 
-    $db = new Database();
-    $con = $db->conectar();
 
-    $sql = "SELECT id_transaccion, fecha, status, total, medio_pago, CONCAT(nombres, ' ', apellidos) AS cliente
+$db = new Database();
+$con = $db->conectar();
+
+$sql = "SELECT id_transaccion, fecha, status, total, medio_pago, CONCAT(nombres, ' ', apellidos) AS cliente
     FROM compras 
     INNER JOIN clientes ON compras.id_cliente = clientes.id
     ORDER BY DATE(fecha) DESC";
-    $resultado = $con->query($sql);
-    require  '../header.php';
+$resultado = $con->query($sql);
+require  '../header.php';
 ?>
 
+<main class="flex-shrink-0">
+  <div class="container mt-3">
+    <h4>Compras</h4>
 
-<main class = "flex-shrink-0">
-    <div class="container">
-        <h4>Compras</h4>
-        <hr>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Folio</th>
-                    <th>Cliente</th>
-                    <th>Total</th>
-                    <th>Fecha</th>
-                    <th>Detalles</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($row= $resultado->fetch(PDO::FETCH_ASSOC)){?>
-                    <tr>
-                        <td><?php echo $row['id_transaccion']; ?></td>
-                        <td><?php echo $row['cliente']; ?></td>
-                        <td><?php echo $row['total']; ?></td>
-                        <td><?php echo $row['fecha']; ?></td>
-                        <td>
-                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" 
-                            data-bs-target="#detalleModal" data-bs-orden="<?php echo $row['id_transaccion']; ?>">
-                            Ver</button>
+    <a href="genera_reporte_compras.php" class="btn btn-success btn-sm">
+      Reporte de compras
+    </a>
 
-                        </td>
-                    </tr>
-                <?php }?>
-            </tbody>
-        </table>
-    </div>
+    <hr>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Folio</th>
+          <th>Cliente</th>
+          <th>Total</th>
+          <th>Fecha</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+        <tr>
+          <td><?php echo $row['id_transaccion']; ?></td>
+          <td><?php echo $row['cliente']; ?></td>
+          <td><?php echo $row['total']; ?></td>
+          <td><?php echo $row['fecha']; ?></td>
+          <td>
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"
+              data-bs-orden="<?php echo $row['id_transaccion']; ?>">
+              Ver</button>
+
+          </td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
 </main>
 
 <!-- Modal -->
@@ -75,7 +80,7 @@
 <script>
 const detalleModal = document.getElementById('detalleModal')
 if (detalleModal) {
-    detalleModal.addEventListener('show.bs.modal', event => {
+  detalleModal.addEventListener('show.bs.modal', event => {
     const button = event.relatedTarget
     const orden = button.getAttribute('data-bs-orden')
     const modalBody = detalleModal.querySelector('.modal-body')
@@ -87,17 +92,17 @@ if (detalleModal) {
     fetch(url, {
         method: 'post',
         body: formData,
-    })
-    .then((resp) => resp.json())
-    .then(function(data){
+      })
+      .then((resp) => resp.json())
+      .then(function(data) {
         modalBody.innerHTML = data
-    })
+      })
   })
 }
 
 detalleModal.addEventListener('hide.bs.modal', event => {
-    const modalBody = detalleModal.querySelector('.modal-body')
-    modalBody.innerHTML = ''
+  const modalBody = detalleModal.querySelector('.modal-body')
+  modalBody.innerHTML = ''
 })
 </script>
 
