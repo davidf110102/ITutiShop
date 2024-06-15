@@ -100,4 +100,5 @@ detalleModal.addEventListener('hide.bs.modal', event => {
     modalBody.innerHTML = ''
 })
 </script>
-<?php include '../footer.php'; ?>
+
+<?php include '../footer.php'; ?>
