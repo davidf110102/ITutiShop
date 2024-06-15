@@ -46,6 +46,12 @@
                         <td><?php echo $row['estatus']; ?></td>
                         
                         <td>
+
+                        <a href="cambiar_password.php?user_id=<?php echo $row['id'];?>" class="btn btn-warning
+                        btn-sm">
+                        cambiar password
+                        </a>
+                        
                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" 
                             data-bs-target="#detalleModal" data-bs-orden="<?php echo $row['id']; ?>">
                             Ver</button>
