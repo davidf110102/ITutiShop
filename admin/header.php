@@ -53,6 +53,10 @@
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Configuracion
             </a>
+            <a class="nav-link" href="<?php echo ADMIN_URL; ?>usuarios">
+              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+              Usuarios
+            </a>
             <a class="nav-link" href="<?php echo ADMIN_URL; ?>categorias">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Categorias
