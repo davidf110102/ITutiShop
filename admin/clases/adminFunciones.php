@@ -10,6 +10,13 @@ function esNulo(array $parametros)
   return false;
 }
 
+function validaPassword($password, $repassword)
+{
+    if (strcmp($password, $repassword) === 0) {
+        return true;
+    }
+    return false;
+}
 
 function usuarioExiste($usuario, $con)
 {
