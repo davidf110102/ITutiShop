@@ -46,6 +46,6 @@ class PDF extends FPDF
   {
     $this->SetY(-15);
     $this->SetFont('Arial', 'I', 9);
-    $this->Cell(0, 10, 'Pagina ' . $this->PageNo() . ' /{nb}', 0, 0);
+    $this->Cell(0, 10, mb_convert_encoding('Pagina ', 'ISO-8859-1', 'UTF-8') . $this->PageNo() . ' /{nb}', 0, 0, 'C');
   }
 }
