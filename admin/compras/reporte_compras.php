@@ -41,4 +41,4 @@ while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
   $pdf->Cell(30, 6, $row['total'], 1, 0);
   $pdf->Cell(30, 6, $row['medio_pago'], 1, 1);
 }
-$pdf->Output();
+$pdf->Output('D');
