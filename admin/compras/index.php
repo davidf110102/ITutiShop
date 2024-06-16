@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
   exit;
 }
 
-
 $db = new Database();
 $con = $db->conectar();
 
@@ -42,18 +41,17 @@ require  '../header.php';
       </thead>
       <tbody>
         <?php while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
-        <tr>
-          <td><?php echo $row['id_transaccion']; ?></td>
-          <td><?php echo $row['cliente']; ?></td>
-          <td><?php echo $row['total']; ?></td>
-          <td><?php echo $row['fecha']; ?></td>
-          <td>
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"
-              data-bs-orden="<?php echo $row['id_transaccion']; ?>">
-              Ver</button>
+          <tr>
+            <td><?php echo $row['id_transaccion']; ?></td>
+            <td><?php echo $row['cliente']; ?></td>
+            <td><?php echo $row['total']; ?></td>
+            <td><?php echo $row['fecha']; ?></td>
+            <td>
+              <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detalleModal" data-bs-orden="<?php echo $row['id_transaccion']; ?>">
+                Ver</button>
 
-          </td>
-        </tr>
+            </td>
+          </tr>
         <?php } ?>
       </tbody>
     </table>
@@ -78,32 +76,32 @@ require  '../header.php';
 </div>
 
 <script>
-const detalleModal = document.getElementById('detalleModal')
-if (detalleModal) {
-  detalleModal.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget
-    const orden = button.getAttribute('data-bs-orden')
+  const detalleModal = document.getElementById('detalleModal')
+  if (detalleModal) {
+    detalleModal.addEventListener('show.bs.modal', event => {
+      const button = event.relatedTarget
+      const orden = button.getAttribute('data-bs-orden')
+      const modalBody = detalleModal.querySelector('.modal-body')
+
+      const url = '<?php echo ADMIN_URL; ?>compras/getCompra.php'
+      let formData = new FormData()
+      formData.append('orden', orden)
+
+      fetch(url, {
+          method: 'post',
+          body: formData,
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+          modalBody.innerHTML = data
+        })
+    })
+  }
+
+  detalleModal.addEventListener('hide.bs.modal', event => {
     const modalBody = detalleModal.querySelector('.modal-body')
-
-    const url = '<?php echo ADMIN_URL; ?>compras/getCompra.php'
-    let formData = new FormData()
-    formData.append('orden', orden)
-
-    fetch(url, {
-        method: 'post',
-        body: formData,
-      })
-      .then((resp) => resp.json())
-      .then(function(data) {
-        modalBody.innerHTML = data
-      })
+    modalBody.innerHTML = ''
   })
-}
-
-detalleModal.addEventListener('hide.bs.modal', event => {
-  const modalBody = detalleModal.querySelector('.modal-body')
-  modalBody.innerHTML = ''
-})
 </script>
 
 <?php include '../footer.php'; ?>
