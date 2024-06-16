@@ -40,4 +40,12 @@ class PDF extends FPDF
     $this->Cell(30, 6, 'Medio Pago', 1, 1);
     $this->SetFont('Arial', '', 11);
   }
+
+
+  public function Footer()
+  {
+    $this->SetY(-15);
+    $this->SetFont('Arial', 'I', 9);
+    $this->Cell(0, 10, 'Pagina ' . $this->PageNo() . ' /{nb}', 0, 0);
+  }
 }

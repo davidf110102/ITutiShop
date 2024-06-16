@@ -30,6 +30,7 @@ $datos = [
 
 
 $pdf = new PDF('P', 'mm', 'Letter', $datos);
+$pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 10);
 
