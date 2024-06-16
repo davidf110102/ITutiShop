@@ -23,8 +23,11 @@ class PDF extends FPDF
     $y = $this->GetY();
     $this->MultiCell(130, 10, 'Reporte de compras', 0, 'C');
 
-    $this->SetXY(160, $y);
+    $this->Cell(30);
     $this->SetFont('Arial', '', 11);
+    $this->MultiCell(130, 10, 'Del ' . $this->fechaIni . ' al ' . $this->fechaFin, 0, 'C');
+
+    $this->SetXY(160, $y);
     $this->Cell(40, 10, 'Fecha: ' . date('d/m/Y'), 0, 1, 'L');
 
     $this->Ln(8);
