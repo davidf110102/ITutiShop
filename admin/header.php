@@ -11,6 +11,8 @@
   <link href="<?php echo ADMIN_URL; ?>css/styles.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -52,6 +54,10 @@
             <a class="nav-link" href="<?php echo ADMIN_URL; ?>configuracion">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Configuracion
+            </a>
+            <a class="nav-link" href="<?php echo ADMIN_URL; ?>usuarios">
+              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+              Usuarios
             </a>
             <a class="nav-link" href="<?php echo ADMIN_URL; ?>categorias">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
