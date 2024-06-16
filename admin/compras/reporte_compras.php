@@ -14,11 +14,12 @@ $con = $db->conectar();
 $fechaIni = $_POST['fecha_ini'];
 $fechaFin = $_POST['fecha_fin'];
 
-$query = "SELECT date_format(c.fecha, '$d/$m/$Y %H:%i') AS fecahhora, c.status, c.total, c.medio_pago, CONCAT(cli.nombres, ' ', cli.apellidos) AS cliente
-    FROM compras AS c
-    INNER JOIN clientes AS cli ON c.id_cliente = cli.id
-    WHERE DATE(c.fecha) BETWEEN ? AND ? 
-    ORDER BY DATE(fecha) ASC";
+$query = "SELECT DATE_FORMAT(c.fecha, '%d/%m/%Y %H:%i') AS fecha_hora, c.status, c.total, c.medio_pago, CONCAT(cli.nombres, ' ', cli.apellidos) AS cliente
+FROM tienda_online.compras AS c
+INNER JOIN tienda_online.clientes AS cli ON c.id_cliente = cli.id
+WHERE DATE(c.fecha) BETWEEN ? AND ?
+ORDER BY DATE(c.fecha) ASC";
+
 $resultado = $con->prepare($query);
 $resultado->execute([$fechaIni, $fechaFin]);
 
@@ -26,7 +27,11 @@ $pdf = new FPDF('P', 'mm', 'Letter');
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 10);
 
-while ($row = $resultado->fetchAll($PDO::FETCH_ASSOC)) {
-  $pdf->Cell(30, 6, $row['fechaHora'], 1, 0);
+while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+  $pdf->Cell(30, 6, $row['fecha_hora'], 1, 0);
+  $pdf->Cell(30, 6, $row['status'], 1, 0);
+  $pdf->Cell(60, 6, $row['cliente'], 1, 0);
+  $pdf->Cell(30, 6, $row['total'], 1, 0);
+  $pdf->Cell(30, 6, $row['medio_pago'], 1, 1);
 }
 $pdf->Output();
