@@ -41,7 +41,6 @@ class PDF extends FPDF
     $this->SetFont('Arial', '', 11);
   }
 
-
   public function Footer()
   {
     $this->SetY(-15);
