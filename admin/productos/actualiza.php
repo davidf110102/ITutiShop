@@ -1,6 +1,7 @@
 <?php
 require  '../config/database.php';
 require  '../config/config.php';
+require  '../clases/adminFunciones.php';
 
 if (!isset($_SESSION['user_type'])) {
     header('Location: ../index.php');
@@ -17,15 +18,16 @@ $con = $db->conectar();
 
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];
+$slug = crearUrl($nombre);
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $descuento = $_POST['descuento'];
 $stock = $_POST['stock'];
 $categoria = $_POST['categoria'];
 
-$sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio= ?, descuento= ?, stock= ?, id_categoria= ? WHERE id = ?";
+$sql = "UPDATE productos SET slug = ?,nombre = ?, descripcion = ?, precio= ?, descuento= ?, stock= ?, id_categoria= ? WHERE id = ?";
 $stm = $con->prepare($sql);
-if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria, $id])){
+if($stm->execute([$slug, $nombre, $descripcion, $precio, $descuento, $stock, $categoria, $id])){
 
     /*Subir imagen princiapl*/
     if($_FILES['imagen_principal']['error'] == UPLOAD_ERR_OK){
