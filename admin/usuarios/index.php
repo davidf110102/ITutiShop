@@ -60,7 +60,10 @@
                             Baja
                         </button>
                             <?php else: ?>
-
+                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" 
+                            data-bs-target="#activaModal" data-bs-user="<?php echo $row['id']; ?>">
+                            Activa
+                        </button>
                             <?php endif; ?>
 
                         </td>
@@ -85,8 +88,31 @@
       <div class="modal-footer">
         <form action="deshabilita.php" method="post">
             <input type="hidden" name="id">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-danger">Deshabilitar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger">Deshabilitar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="activaModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="detalleModalLabel">Alerta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Desea activar este usuario?
+      </div>
+      <div class="modal-footer">
+        <form action="activa.php" method="post">
+            <input type="hidden" name="id">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Activar</button>
+        </form>
       </div>
     </div>
   </div>
@@ -98,6 +124,15 @@ const eliminaModal = document.getElementById('eliminaModal')
     const button = event.relatedTarget
     const user = button.getAttribute('data-bs-user')
     const inputId = eliminaModal.querySelector('.modal-footer input')
+
+    inputId.value = user
+  })
+
+  const activaModal = document.getElementById('activaModal')
+    activaModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const user = button.getAttribute('data-bs-user')
+    const inputId = activaModal.querySelector('.modal-footer input')
 
     inputId.value = user
   })
