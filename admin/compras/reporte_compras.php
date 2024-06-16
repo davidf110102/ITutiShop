@@ -37,7 +37,7 @@ $pdf->SetFont('Arial', '', 10);
 while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
   $pdf->Cell(30, 6, $row['fecha_hora'], 1, 0);
   $pdf->Cell(30, 6, $row['status'], 1, 0);
-  $pdf->Cell(60, 6, $row['cliente'], 1, 0);
+  $pdf->Cell(60, 6, mb_convert_encoding($row['cliente'], 'ISO-8859-1', 'UTF-8'), 1, 0);
   $pdf->Cell(30, 6, $row['total'], 1, 0);
   $pdf->Cell(30, 6, $row['medio_pago'], 1, 1);
 }
