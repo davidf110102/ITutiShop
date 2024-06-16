@@ -31,7 +31,7 @@ $datos = [
 
 $pdf = new PDF('P', 'mm', 'Letter', $datos);
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 10);
+$pdf->SetFont('Arial', '', 10);
 
 while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
   $pdf->Cell(30, 6, $row['fecha_hora'], 1, 0);

@@ -31,5 +31,13 @@ class PDF extends FPDF
     $this->Cell(40, 10, 'Fecha: ' . date('d/m/Y'), 0, 1, 'L');
 
     $this->Ln(8);
+
+    $this->SetFont('Arial', 'B', 11);
+    $this->Cell(30, 6, 'Fecha', 1, 0);
+    $this->Cell(30, 6, 'Estatus', 1, 0);
+    $this->Cell(60, 6, 'Cliente', 1, 0);
+    $this->Cell(30, 6, 'Total', 1, 0);
+    $this->Cell(30, 6, 'Medio Pago', 1, 1);
+    $this->SetFont('Arial', '', 11);
   }
 }
