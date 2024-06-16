@@ -51,10 +51,17 @@
                         btn-sm">
                         cambiar password
                         </a>
-                        
-                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" 
-                            data-bs-target="#detalleModal" data-bs-orden="<?php echo $row['id']; ?>">
-                            Ver</button>
+
+                            <?php if($row['activacion'] == 1) : ?>
+
+
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" 
+                            data-bs-target="#eliminaModal" data-bs-user="<?php echo $row['id']; ?>">
+                            Baja
+                        </button>
+                            <?php else: ?>
+
+                            <?php endif; ?>
 
                         </td>
                     </tr>
@@ -65,49 +72,36 @@
 </main>
 
 <!-- Modal -->
-<div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="detalleModalLabel">Detalles de Compra</h1>
+        <h1 class="modal-title fs-5" id="detalleModalLabel">Alerta</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        ¿Desea deshabilitar este usuario?
       </div>
       <div class="modal-footer">
+        <form action="deshabilita.php" method="post">
+            <input type="hidden" name="id">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger">Deshabilitar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const detalleModal = document.getElementById('detalleModal')
-if (detalleModal) {
-    detalleModal.addEventListener('show.bs.modal', event => {
+const eliminaModal = document.getElementById('eliminaModal')
+    eliminaModal.addEventListener('show.bs.modal', event => {
     const button = event.relatedTarget
-    const orden = button.getAttribute('data-bs-orden')
-    const modalBody = detalleModal.querySelector('.modal-body')
+    const user = button.getAttribute('data-bs-user')
+    const inputId = eliminaModal.querySelector('.modal-footer input')
 
-    const url = '<?php echo ADMIN_URL; ?>compras/getCompra.php'
-    let formData = new FormData()
-    formData.append('orden', orden)
-
-    fetch(url, {
-        method: 'post',
-        body: formData,
-    })
-    .then((resp) => resp.json())
-    .then(function(data){
-        modalBody.innerHTML = data
-    })
+    inputId.value = user
   })
-}
 
-detalleModal.addEventListener('hide.bs.modal', event => {
-    const modalBody = detalleModal.querySelector('.modal-body')
-    modalBody.innerHTML = ''
-})
 </script>
 
 <?php include '../footer.php'; ?>
