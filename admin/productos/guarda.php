@@ -1,6 +1,7 @@
 <?php
 require  '../config/database.php';
 require  '../config/config.php';
+require  '../clases/adminFunciones.php';
 
 if (!isset($_SESSION['user_type'])) {
     header('Location: ../index.php');
@@ -16,16 +17,17 @@ $db = new Database();
 $con = $db->conectar();
 
 $nombre = $_POST['nombre'];
+$slug = crearUrl($nombre);
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $descuento = $_POST['descuento'];
 $stock = $_POST['stock'];
 $categoria = $_POST['categoria'];
 
-$sql = "INSERT INTO productos (nombre, descripcion, precio, descuento, stock, id_categoria, activo) 
-VALUES(?, ?, ?, ?, ?, ?, 1)";
+$sql = "INSERT INTO productos (slug, nombre, descripcion, precio, descuento, stock, id_categoria, activo) 
+VALUES(?, ?, ?, ?, ?, ?, ?, 1)";
 $stm = $con->prepare($sql);
-if($stm->execute([$nombre, $descripcion, $precio, $descuento, $stock, $categoria])){
+if($stm->execute([$slug, $nombre, $descripcion, $precio, $descuento, $stock, $categoria])){
     $id = $con->lastInsertId();
 
     /*Subir imagen princiapl*/

@@ -12,10 +12,10 @@ function esNulo(array $parametros)
 
 function validaPassword($password, $repassword)
 {
-    if (strcmp($password, $repassword) === 0) {
-        return true;
-    }
-    return false;
+  if (strcmp($password, $repassword) === 0) {
+    return true;
+  }
+  return false;
 }
 
 function usuarioExiste($usuario, $con)
@@ -94,4 +94,23 @@ function actualizaPassword($user_id, $password, $con)
     return true;
   }
   return false;
+}
+
+function actualizaPasswordAdmin($user_id, $password, $con)
+{
+  $sql = $con->prepare("UPDATE admin SET password=? WHERE id=?");
+  if ($sql->execute([$password, $user_id])) {
+    return true;
+  }
+  return false;
+}
+
+function crearUrl($cadena)
+{
+  $slug = strtolower($cadena);
+  $slug = preg_replace('/[^a-z0-9\-]/','-',$slug);
+  $slug = preg_replace('/-+/','-',$slug);
+  $slug = trim($slug,'-');
+
+  return $slug;
 }
