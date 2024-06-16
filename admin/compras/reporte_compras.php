@@ -1,7 +1,7 @@
 <?php
 require '../config/database.php';
 require '../config/config.php';
-require('../fpdf/fpdf.php');
+require('../fpdf/plantilla_reporte_compras.php');
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
   header('Location: ../index.php');
@@ -23,7 +23,13 @@ ORDER BY DATE(c.fecha) ASC";
 $resultado = $con->prepare($query);
 $resultado->execute([$fechaIni, $fechaFin]);
 
-$pdf = new FPDF('P', 'mm', 'Letter');
+$datos = [
+  'fechaIni' => $fechaIni,
+  'fechaFin' => $fechaFin,
+];
+
+
+$pdf = new PDF('P', 'mm', 'Letter', $datos);
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 10);
 
