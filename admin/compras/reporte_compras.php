@@ -11,8 +11,8 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
 $db = new Database();
 $con = $db->conectar();
 
-$fechaIni = $_POST['fecha_ini'];
-$fechaFin = $_POST['fecha_fin'];
+$fechaIni = $_POST['fecha_ini'] ?? '01-01-2021';
+$fechaFin = $_POST['fecha_fin'] ?? '01-01-2025';
 
 $query = "SELECT DATE_FORMAT(c.fecha, '%d/%m/%Y %H:%i') AS fecha_hora, c.status, c.total, c.medio_pago, CONCAT(cli.nombres, ' ', cli.apellidos) AS cliente
 FROM tienda_online.compras AS c
