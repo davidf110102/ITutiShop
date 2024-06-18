@@ -38,7 +38,7 @@ define("MAIL_USER", $config['correo_email']);
 define("MAIL_PASS", descifrar($config['correo_password']));
 define("MAIL_PORT", $config['correo_puerto']);
 
-
+session_name('ecommerce_session');
 session_start();
 
 $num_cart = 0;
