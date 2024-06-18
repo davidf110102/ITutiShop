@@ -22,7 +22,8 @@ if (is_array($datos)) {
   $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
   $status = $datos['detalles']['status'];
   $fecha = $datos['detalles']['update_time'];
-  $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
+  //$fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
+  $fecha_nueva = date('Y-m-d H:i:s');
   //$email = $datos['detalles']['payer']['email_address'];
   $email = $row_cliente['email'];
   //$id_cliente = $datos['detalles']['payer']['payer_id'];

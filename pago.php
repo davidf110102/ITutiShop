@@ -116,7 +116,10 @@ if ($productos != null) {
           amount: {
             value: <?php echo $total; ?>
           }
-        }]
+        }],
+        application_context: {
+          shipping_preference: "NO_SHIPPING"
+        }
       });
     },
     onApprove: function(data, actions) {
