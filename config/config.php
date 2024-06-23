@@ -25,7 +25,7 @@ define("MONEDA", "$");
 
 //configuracion para paypal
 define("CLIENT_ID", "Ad7IMXOaBDm9Rti8M3nHRqSW3gsrwo_4NmWbdzH7QKBtP6czf5PN6wUEEVlKMpHpWP80sfTtMr_CSlXj");
-define("CURRENCY", "MXN");
+define("CURRENCY", "USD");
 
 //Configuración para Mercado Pago
 define("TOKEN_MP", "TEST-3032682665147199-062222");
