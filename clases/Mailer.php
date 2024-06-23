@@ -31,6 +31,7 @@ class Mailer
 
       // Configuración del correo electrónico
       $mail->setFrom('vichicelakevin@gmail.com');
+      $mail->addAddress('dayanagualpa385@gmail.com');
       //Correo receptor y nombre
       $mail->addAddress($email);
 
