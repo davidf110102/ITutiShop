@@ -92,6 +92,9 @@ if (!empty($_POST)) {
       <div class="col-12">
         ¿No tienes cuenta? <a href="registro.php">Registrate aquí</a>
       </div>
+      <div class="d-grid gap-3 col-12">
+        <button class="btn btn-primary" onclick="window.location.href='/ProyectoEcommerce/ITutiShop/admin/index.php'">Ingresar como administrador</button>
+      </div>
     </form>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
