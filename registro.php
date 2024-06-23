@@ -138,7 +138,7 @@
             <i><b>Nota:</b> Los campos con asterisco son obligatorios</i>
 
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='login.php'">Registrar</button>
             </div>
         </form>
     </div>
