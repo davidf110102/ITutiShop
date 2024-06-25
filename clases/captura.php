@@ -27,7 +27,7 @@ if (is_array($datos)) {
   //$email = $datos['detalles']['payer']['email_address'];
   $email = $row_cliente['email'];
   //$id_cliente = $datos['detalles']['payer']['payer_id'];
-  
+
   $sql = $con->prepare("INSERT INTO compras (id_transaccion, fecha, status, email, id_cliente, total, medio_pago) VALUES (?,?,?,?,?,?,?)");
   $sql->execute([$id_transaccion, $fecha, $status, $email, $idCliente, $total, 'paypal']);
   $id = $con->lastInsertId();
@@ -45,18 +45,19 @@ if (is_array($datos)) {
         $precio_desc = $precio - (($precio * $descuento) / 100);
 
         $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad) VALUES (?,?,?,?,?)");
-        if($sql_insert->execute([$id, $row_prod['id'],  $row_prod['nombre'], $precio_desc, $cantidad])){
+        if ($sql_insert->execute([$id, $row_prod['id'],  $row_prod['nombre'], $precio_desc, $cantidad])) {
           restarStock($row_prod['id'], $cantidad, $con);
         }
       }
       require 'Mailer.php';
 
       $asunto = "Detalles de su compra";
-      $cuerpo = '<h4>Gracias por preferirnos 🤑</h4>';
+      $cuerpo = '<h4>Gracias por preferirnos :)</h4>';
       $cuerpo .= '<h4>Folio de la compra: ' . $id_transaccion . '</h4>';
       $cuerpo .= '<h4>Fecha de la compra: ' . $fecha . '</h4>';
       $cuerpo .= '<h4>Total: ' . $total . '</h4>';
       $cuerpo .= '<h4>Puede ver los detalles de su pago en el siguiente enlace: <a href="http://localhost:8081/ProyectoEcommerce/ITutiShop/completado.php?key=' . $id_transaccion . '">Ver detalles del pago</a></h4>';
+
 
 
       $mailer = new Mailer();
@@ -66,8 +67,9 @@ if (is_array($datos)) {
   }
 }
 
-function restarStock($id, $cantidad, $con){
+function restarStock($id, $cantidad, $con)
+{
 
   $sql = $con->prepare("UPDATE productos SET stock = stock - ? WHERE id = ?");
-  $sql->execute([$cantidad,$id]); 
+  $sql->execute([$cantidad, $id]);
 }
