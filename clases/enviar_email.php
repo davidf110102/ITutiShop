@@ -27,7 +27,7 @@ try {
   // Contenido del correo
   $mail->isHTML(true);
   $mail->Subject = 'Detalles de su compra';
-  $cuerpo = '<h4>Gracias por preferirnos 🤑</h4>';
+  $cuerpo = '<h4>Gracias por preferirnos :)</h4>';
   $cuerpo .= '<h4>Folio de la compra: ' . $id_transaccion . '</h4>';
   $cuerpo .= '<h4>Fecha de la compra: ' . $fecha . '</h4>';
   $cuerpo .= '<h4>Total: ' . $total . '</h4>';
