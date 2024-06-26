@@ -56,7 +56,8 @@ if (is_array($datos)) {
       $cuerpo .= '<h4>Folio de la compra: ' . $id_transaccion . '</h4>';
       $cuerpo .= '<h4>Fecha de la compra: ' . $fecha . '</h4>';
       $cuerpo .= '<h4>Total: ' . $total . '</h4>';
-      $cuerpo .= '<h4>Puede ver los detalles de su pago en el siguiente enlace: <a href="http://localhost/ITutiShop/completado.php?key=' . $id_transaccion . '">Ver detalles del pago</a></h4>';
+      $cuerpo .= '<h4>Puede ver los detalles de su pago en el siguiente enlace: <a href="http://localhost:8081/ProyectoEcommerce/ITutiShop/completado.php?key=' . $id_transaccion . '">Ver detalles del pago</a></h4>';
+
 
 
       $mailer = new Mailer();
