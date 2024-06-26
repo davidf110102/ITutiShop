@@ -1,8 +1,8 @@
 <header>
-<div class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="navbar navbar-expand-lg navbar-dark"  style="background-color: rgb(22, 13, 159); padding-left: 50px; padding-right: 50px;>
     <div class="container">
-    <a href="index.php" class="navbar-brand">
-        <strong>ITuti Shop</strong>
+    <a href="#" class="navbar-brand" style="color: rgb(255, 241, 0);">
+        <strong>ITuTi Shop</strong>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,8 +31,8 @@
         <?php if(isset($_SESSION['user_id'])) { ?>
 
             <div class="dropdown">
-                <button class="btn btn-success btn-sm dropdown-toggle" type="button" 
-                id="btn_session" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-warning btn-sm dropdown-toggle" type="button" 
+                id="btn_session" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: rgb(241, 228, 0); color: rgb(241, 241, 0);">
                     <i class="fa-solid fa-user"></i> &nbsp; <?php echo $_SESSION['user_name']; ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="btn_session">
@@ -41,7 +41,7 @@
                 </ul>
             </div>
         <?php } else {?>
-            <a href="login.php" class="btn btn-success btn-sm"><i class="fa-solid fa-user"></i> Ingresar </a>   
+            <a href="login.php" class="btn btn-success btn-sm" style="background-color: rgb(241, 228, 0); color: rgb(100, 100, 100);"><i class="fa-solid fa-user"></i> Ingresar </a>   
         <?php } ?>
     </div>
     </div>
