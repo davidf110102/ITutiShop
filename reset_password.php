@@ -36,10 +36,10 @@ if (!empty($_POST)) {
     if (count($errors) == 0) {
         $pass_hash = password_hash($password, PASSWORD_DEFAULT);
         if (actualizaPassword($user_id, $pass_hash, $con)) {
-            echo "Contraseña modificada.<br><a href='login.php'>Iniciar Sesión</a>";
+            echo "Contraseña modificada.<br><a href='login.php'><button class= 'btn btn-primary' type='button'>Iniciar Sesión</button></a>";
             exit;
         } else {
-            $errors[] = "Error al modificar la contraseña. Intentalo nuevamente.";
+            $errors[] = "Error al modificar la contraseña. Inténtalo nuevamente.";
         }
     }
 }

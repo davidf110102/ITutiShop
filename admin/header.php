@@ -12,7 +12,32 @@
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    /* Estilo para ocultar las secciones del menú lateral cuando está colapsado */
+    .sidebar-collapsed #layoutSidenav_nav {
+      display: none;
+    }
 
+    /* Ajusta el contenido principal cuando el menú lateral está colapsado */
+    .content-expanded {
+      transition: margin-left 0.3s ease;
+    }
+
+    .content-collapsed {
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .content-expanded {
+        margin-left: 250px; /* Ancho del menú lateral cuando está abierto */
+      }
+
+      .content-collapsed {
+        margin-left: 75px; /* Ancho del menú lateral cuando está cerrado */
+      }
+    }
+  </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -20,25 +45,10 @@
     <!-- Navbar Brand-->
     <a id="navbar-brand" class="navbar-brand ps-3" href="../inicio.php">iTuTiShop</a>
 
-<script>
-  // Obtén la URL actual
-  var currentUrl = window.location.pathname;
-
-  // Encuentra el elemento del enlace por su ID
-  var navbarBrand = document.getElementById('navbar-brand');
-
-  // Verifica si la URL actual es "admin/inicio.php"
-  if (currentUrl.endsWith("admin/inicio.php")) {
-    // Si la URL es "admin/inicio.php", cambia el href a "inicio.php"
-    navbarBrand.href = "inicio.php";
-  } else {
-    // Si no es "admin/inicio.php", asegura que el href sea "../inicio.php"
-    navbarBrand.href = "../inicio.php";
-  }
-</script>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-        class="fas fa-bars"></i></button>
+    <!-- Sidebar Toggle Button -->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
@@ -55,10 +65,12 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="../logout.php">Cerrar Sesión</a></li>
+          <li><a id="logout-link" class="dropdown-item" href="../logout.php">Cerrar Sesión</a></li>
+
         </ul>
       </li>
     </ul>
+    
   </nav>
   <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -119,4 +131,47 @@
 
       </nav>
     </div>
-    <div id="layoutSidenav_content">
+    <div id="layoutSidenav_content" class="content-expanded">
+      
+    
+    <script>
+      // Ajusta dinámicamente el enlace del Navbar Brand según la URL actual
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentUrl = window.location.pathname;
+        var navbarBrand = document.getElementById('navbar-brand');
+
+        if (currentUrl.endsWith("admin/inicio.php")) {
+          navbarBrand.href = "inicio.php";
+        } else {
+          navbarBrand.href = "../inicio.php";
+        }
+      });
+
+      // Ajusta dinámicamente el enlace de Cerrar Sesión según la URL actual
+      var currentUrl = window.location.pathname;
+      var logoutLink = document.getElementById('logout-link');
+
+      if (currentUrl.endsWith("admin/inicio.php")) {
+        logoutLink.href = "logout.php";
+      } else {
+        logoutLink.href = "../logout.php";
+      }
+
+      // Maneja el evento de clic en el botón de alternar barra lateral
+      document.getElementById('sidebarToggle').addEventListener('click', function () {
+        var layoutSidenav = document.getElementById('layoutSidenav');
+        var layoutSidenavContent = document.getElementById('layoutSidenav_content');
+
+        layoutSidenav.classList.toggle('sidebar-collapsed');
+
+        if (layoutSidenav.classList.contains('sidebar-collapsed')) {
+          layoutSidenavContent.classList.remove('content-expanded');
+          layoutSidenavContent.classList.add('content-collapsed');
+        } else {
+          layoutSidenavContent.classList.remove('content-collapsed');
+          layoutSidenavContent.classList.add('content-expanded');
+        }
+      });
+    </script>
+      </body>
+</html>
