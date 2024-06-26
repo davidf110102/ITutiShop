@@ -132,10 +132,10 @@ if ($slug == '') {
                         ?>
                     </div>
                     <div class="d-grid gap-3 col-10 mx-auto">
-                        <button class="btn btn-primary" type="button">Comprar ahora</button>
-                        <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, cantidad.value)">
-                            Agregar al Carrito</button>
-                    </div>
+    <!--<a href="pago.php" class="btn btn-primary" onclick="addProducto(<?php echo $id; ?>, cantidad.value)">Comprar ahora</a>-->
+    <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo $id; ?>, cantidad.value)">Agregar al Carrito</button>
+</div>
+
                 </div>
             </div>
         </div>

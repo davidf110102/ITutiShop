@@ -13,7 +13,7 @@
                 <a href="index.php" class="nav-link active">Catalogo</a>
             </li>
             <li class="nav-item">
-                <a href="index.php" class="nav-link">Contacto</a>
+                <a href="https://tuti.com.ec" class="nav-link">Contacto</a>
             </li>
         </ul>
         <form action="index.php" method="get" autocomplete="off">
