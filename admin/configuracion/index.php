@@ -32,8 +32,6 @@ foreach ($datos as $dato) {
   <div class="container-fluid px-4">
     <h1 class="mt-4">Configuracion</h1>
 
-    <?php echo descifrar($config['correo_password']); ?>
-
 
     <form action="guarda.php" method="post">
       <div class="row">
