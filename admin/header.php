@@ -18,7 +18,24 @@
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="../inicio.php">iTuTiShop</a>
+    <a id="navbar-brand" class="navbar-brand ps-3" href="../inicio.php">iTuTiShop</a>
+
+<script>
+  // Obtén la URL actual
+  var currentUrl = window.location.pathname;
+
+  // Encuentra el elemento del enlace por su ID
+  var navbarBrand = document.getElementById('navbar-brand');
+
+  // Verifica si la URL actual es "admin/inicio.php"
+  if (currentUrl.endsWith("admin/inicio.php")) {
+    // Si la URL es "admin/inicio.php", cambia el href a "inicio.php"
+    navbarBrand.href = "inicio.php";
+  } else {
+    // Si no es "admin/inicio.php", asegura que el href sea "../inicio.php"
+    navbarBrand.href = "../inicio.php";
+  }
+</script>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
         class="fas fa-bars"></i></button>
@@ -71,18 +88,7 @@
               Compras
             </a>
 
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Layouts
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-              </nav>
-            </div>
+            
 
             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
