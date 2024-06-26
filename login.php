@@ -93,7 +93,7 @@ if (!empty($_POST)) {
         ¿No tienes cuenta? <a href="registro.php">Registrate aquí</a>
       </div>
       <div class="d-grid gap-3 col-12">
-        <button class="btn btn-primary" onclick="window.location.href='/ProyectoEcommerce/ITutiShop/admin/index.php'">Ingresar como administrador</button>
+        <button class="btn btn-primary" onclick="window.location.href='/gestion_proyectos/ITutiShop/admin/index.php'">Ingresar como administrador</button>
       </div>
     </form>
   </main>
