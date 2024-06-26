@@ -37,9 +37,9 @@ if (!empty($_POST)) {
 
 <body>
   <header>
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a href="index.php" class="navbar-brand">
+  <div class="navbar navbar-expand-lg navbar-dark"  style="background-color: rgb(22, 13, 159); padding-left: 50px; padding-right: 50px;">
+    <div class="container">
+    <a href="index.php" class="navbar-brand" style="color: rgb(255, 241, 0);">
           <strong>ITuti Shop</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
