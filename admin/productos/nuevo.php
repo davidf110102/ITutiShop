@@ -55,8 +55,9 @@ $categorias = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col mb-3">
                     <label for="precio" class="form-label">Precio</label>
-                    <input type="number" class="form-control" name="precio" id="precio" required>
+                    <input type="number" class="form-control" name="precio" id="precio" step="0.01" required>
                 </div>
+
                 <div class="col mb-3">
                     <label for="descuento" class="form-label">Descuento</label>
                     <input type="number" class="form-control" name="descuento" id="descuento" required>
