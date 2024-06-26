@@ -19,9 +19,9 @@ foreach ($datos as $dato) {
 }
 
 //configuracion del sistema
-define("SITE_URL", "http://localhost/ITutiShop");
+define("SITE_URL", "http://localhost:8081/gestion_proyectos/ITutiShop");
 define("KEY_TOKEN", "APR.wqc-354*");
-define("MONEDA", "$");
+define("MONEDA", "$" );
 
 //configuracion para paypal
 define("CLIENT_ID", "Ad7IMXOaBDm9Rti8M3nHRqSW3gsrwo_4NmWbdzH7QKBtP6czf5PN6wUEEVlKMpHpWP80sfTtMr_CSlXj");

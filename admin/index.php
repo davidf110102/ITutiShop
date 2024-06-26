@@ -67,11 +67,14 @@ if (!empty($_POST)) {
 
                     <?php mostrarMensajes($errors); ?>
 
-                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                      <a class="small" href="password.html">Olvidaste tu contraseña?</a>
+                    <div class="d-grid gap-3 col-12">
                       <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
-                    </div>
+                    </div>   
+                    <br>                 
                   </form>
+                  <div class="d-grid gap-3 col-12">
+                      <button class="btn btn-primary" onclick="window.location.href='/gestion_proyectos/ITutiShop/index.php'">Regresar a la tienda</button>
+                    </div>
                 </div>
               </div>
             </div>
@@ -80,20 +83,8 @@ if (!empty($_POST)) {
     </div>
     </main>
   </div>
-  <div id="layoutAuthentication_footer">
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Your Website 2023</div>
-          <div>
-            <a href="#">Privacy Policy</a>
-            &middot;
-            <a href="#">Terms &amp; Conditions</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
+  <?php include 'footer.php'; ?>
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
   </script>
